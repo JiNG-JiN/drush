@@ -72,12 +72,16 @@ EOT;
     if (!empty($this->db_spec['pdo'][PDO::MYSQL_ATTR_SSL_KEY])) {
       $parameters['ssl-key'] = $this->db_spec['pdo'][PDO::MYSQL_ATTR_SSL_KEY];
     }
-	
-	if (!empty($this->db_spec['pdo'][PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT])) {
+
+    if (!empty($this->db_spec['pdo'][PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT])) {
       $parameters['ssl-key'] = $this->db_spec['pdo'][PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT];
     }
 
     return $this->params_to_options($parameters);
+  }
+
+  public function ssl_mode() {
+    return '--ssl-mode=PREFERRED';
   }
 
   public function silent() {

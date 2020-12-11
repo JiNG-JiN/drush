@@ -162,6 +162,7 @@ class SqlBase {
     $parts = array(
       $this->command(),
       $this->creds(),
+      $this->ssl_mode(),
       $this->silent(), // This removes column header and various helpful things in mysql.
       drush_get_option('extra', $this->query_extra),
       $this->query_file,
@@ -188,6 +189,11 @@ class SqlBase {
 
     return $success;
   }
+
+  /*
+   * A string to add to the command when enable ssl in Azure MySql.
+   */
+  public function ssl_mode() {}
 
   /*
    * A string to add to the command when queries should not print their results.
